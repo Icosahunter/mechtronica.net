@@ -186,17 +186,17 @@ function refreshTable() {
     for (let x of shown_data) {
       text += '<tr>';
       if (use_select_column) {
-        text += '<td><button class="btn btn-square" onclick="partClick(\'' + x.name + '\')">' + select_column_button_text + '</button></td>';
+        text += '<td><button class="btn btn-square" onclick="partClick(\'' + escapeHTML(x.name) + '\')">' + select_column_button_text + '</button></td>';
       }
       for (let y of ordered_headers) {
         text += '<td>';
         if (y in x) {
           if (y == 'slots') {
-            text += '<a href="#modal-1" onclick="showFrameSlots(\'' + x.name + '\')">show</a>';
+            text += '<a href="#modal-1" onclick="showFrameSlots(\'' + escapeHTML(x.name) + '\')">show</a>';
           }
           else {
             if (x[y].length > max_text_len) {
-              text += '<a href="#modal-1" onclick="showText(\'' + y + '\', \'' + x[y] + '\')">show</a>';
+              text += '<a href="#modal-1" onclick="showText(\'' + y + '\', \'' + escapeHTML(x[y]) + '\')">show</a>';
             }
             else {
               text += x[y];
@@ -223,4 +223,13 @@ function showFrameSlots(name) {
 function showText(title, text) {
   modal_title.innerHTML = title;
   modal_content.innerHTML = '<p>' + text + '</p>'
+}
+
+function escapeHTML(unsafe) {
+  return unsafe
+    .replace(/&/g, "\\x26")
+    .replace(/</g, "\\x3c")
+    .replace(/>/g, "\\x3e")
+    .replace(/"/g, "\\x22")
+    .replace(/'/g, "\\x27");
 }
