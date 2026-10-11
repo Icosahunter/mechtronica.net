@@ -17,8 +17,6 @@ Since the end of the war, corporations have become the main sources of political
 | Moscow Combine | A small group of elite corporations headed by Moscow Instruments, the Moscow Combine is not known for playing nice. |
 | Arch Guild | A collection of corporations that seek to bring back reputability to the mech-manufacturer profession. Despite their seemingly virtuous intentions, the guild is rumored to engage in back-stabbing, corporate espionage, and other foul play if it at all helps to improve the public image of the guild and the profession. |
 
-{.table}
-
 ### Rebellions
 | Name                    | Description |
 | ----------------------- | ----------- |
@@ -26,5 +24,3 @@ Since the end of the war, corporations have become the main sources of political
 | Star of Cheilos | A spread out, but tightly bonded rebellion, the Star of Cheilos sees restoring peace and new order to Cheilos as their moral duty. |
 | Reform Conglomerate | The Reform Conglomerate is an amalgamation of many smaller rebellions from throughout the system that seeks to bring things a little bit closer to the way they were. The reform backs many different unions, and sometimes aids rebellions like New Factor, though they do so discreetly and carefully as their main goal is to improve the lives and power of the working class, not cause chaos. |
 | Hand | A cult of Golden Age technology. They seek to overthrow corporate governments and bring about “a new Golden Age” -- by whatever means necessary. |
-
-{.table}

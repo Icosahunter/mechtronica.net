@@ -12,23 +12,19 @@
     <link rel="icon" href="{{site.url}}/images/icon.svg">
     <title> {{ title }} </title>
 
-    <!-- Halfmoon CSS -->
-    <link href="{{site.url}}/halfmoonui/css/halfmoon-variables.min.css" rel="stylesheet" />
+    <!-- Condensate CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@icosahunter/condensate@1.0.1-beta/dist/condensate.min.css">
 
-    <!-- Custom Halfmoon Variables -->
+    <!-- Custom Condensate Variables -->
     <link href="{{site.url}}/custom-variables.css" rel="stylesheet" />
 
     <!-- Google Material Icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     <style>
-    .material-symbols-outlined {
-      font-variation-settings:
-      'FILL' 1,
-      'wght' 400,
-      'GRAD' 0,
-      'opsz' 48
-    }
+        .main-content > :is(h1, h2, h3, h4, h5, h6, p):first-child {
+         margin-top: 3em;
+        }
     </style>
 
     <!-- Google Fonts -->
@@ -36,11 +32,11 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
 
   </head>
-  <body class="with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true" data-sidebar-shortcut-enabled="true" data-set-preferred-theme-onload="true">
+  <body class="hbox fullscreen">
     <!-- Modals go here -->
     <!-- Reference: https://www.gethalfmoon.com/docs/modal -->
 
-    <div class="modal" id="modal-1" tabindex="-1" role="dialog">
+    <!--<div class="modal" id="modal-1" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content modal-content-media">
           <a href="#" class="close" role="button" aria-label="Close">
@@ -50,81 +46,59 @@
           <div id="modal-content"></div>
         </div>
       </div>
-    </div>
+    </div>-->
 
-    <!-- Page wrapper start -->
-    <div class="page-wrapper with-sidebar" data-sidebar-type="full-height">
+      <details class="sidebar">
+          <summary class="button sidebar-button"></summary>
+              <div class="vbox padding" style="height:100vh; overflow-y: scroll;">
+                <a href="#" class="">
+                <img class="height-font-xl" src="{{site.url}}/images/logo-beta.svg" alt="Mechtronica">
+                </a>
+                <br/>
 
-      <!-- Sticky alerts (toasts), empty container -->
-      <!-- Reference: https://www.gethalfmoon.com/docs/sticky-alerts-toasts -->
-      <div class="sticky-alerts"></div>
-
-      <!-- Sidebar start -->
-      <div class="sidebar border-right">
-        <div class="sidebar-menu">
-
-          <!-- Sidebar brand -->
-          <a href="#" class="sidebar-brand">
-            <img class="m-0" src="{{site.url}}/images/logo-beta.svg" alt="Mechtronica">
-          </a>
-          <br/>
-
-          <!-- Sidebar links and titles -->
-          {% for k1, v1 in navlinks %}
-            {% if v1 is string %}
-              <a href="{{site.url}}{{v1}}" class="sidebar-link ml-10{{ " active" if page.url == v1 }}">{{ k1 }}</a>
-            {% else %}
-              <details class="collapse-panel"{{ " open" if page.url in v1 | dump }}> <!-- w-400 = width: 40rem (400px), mw-full = max-width: 100% -->
-                <summary class="collapse-header">
-                  {{ k1 }}
-                </summary>
-                <div class="collapse-content">
-                  {% for k2, v2 in v1 %}
-                    {% if v2 is string %}
-                      <a href="{{site.url}}{{v2}}" class="sidebar-link ml-10{{ " active" if page.url == v2 }}">{{ k2 }}</a>
-                    {% else %}
-                        <h6 class="sidebar-title">{{ k2 }}</h6>
-                      {% for k3, v3 in v2 %}
-                        <a href="{{site.url}}{{v3}}" class="sidebar-link ml-10{{ " active" if page.url == v3 }}">{{ k3 }}</a>
-                      {% endfor %}
-                    {% endif %}
-                  {% endfor %}
+                {% for k1, v1 in navlinks %}
+                {% if v1 is string %}
+                    <a href="{{site.url}}{{v1}}" class="{{ " active" if page.url == v1 }}">{{ k1 }}</a>
+                {% else %}
+                    <details class="vbox" {{ " open" if page.url in v1 | dump }}>
+                        <summary>
+                            {{ k1 }}
+                        </summary>
+                        <div class="vbox">
+                            {% for k2, v2 in v1 %}
+                            {% if v2 is string %}
+                                <a href="{{site.url}}{{v2}}" class="margin-left {{ " active" if page.url == v2 }}">{{ k2 }}</a>
+                            {% else %}
+                                <h6>{{ k2 }}</h6>
+                                {% for k3, v3 in v2 %}
+                                <a href="{{site.url}}{{v3}}" class="margin-left {{ " active" if page.url == v3 }}">{{ k3 }}</a>
+                                {% endfor %}
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </details>
+                {% endif %}
+                {% endfor %}
+                <div class="hbox center">
+                <a class="dm-hidden" style="color: #000;" href="mailto:feedback@mechtronica.net"><span class="material-symbols-outlined height-font-lg"> mail </span></a>
+                <a class="lm-hidden" style="color: #fff;" href="mailto:feedback@mechtronica.net"><span class="material-symbols-outlined height-font-lg"> mail </span></a>
+                <a class="dm-hidden" href="https://github.com/mechtronica/mechtronica.net/issues"><img class="height-font-lg" src="{{site.url}}/images/github-mark.svg"/></a>
+                <a class="lm-hidden" href="https://github.com/mechtronica/mechtronica.net/issues"><img class="height-font-lg" src="{{site.url}}/images/github-mark-white.svg"/></a>
+                <a class="dm-hidden" href="https://discord.gg/VPzzYHqxFy"><img class="height-font-lg" src="{{site.url}}/images/discord-mark-black.svg"/></a>
+                <a class="lm-hidden" href="https://discord.gg/VPzzYHqxFy"><img class="height-font-lg" src="{{site.url}}/images/discord-mark-white.svg"/></a>
                 </div>
-              </details>
-            {% endif %}
-          {% endfor %}
-          <div class="d-flex flex-row justify-content-center m-20">
-            <a class="text hidden-dm" style="color: #000;" href="mailto:feedback@mechtronica.net"><span class="material-symbols-outlined w-25 mx-10"> mail </span></a>
-            <a class="text hidden-lm" style="color: #fff;" href="mailto:feedback@mechtronica.net"><span class="material-symbols-outlined w-25 mx-10"> mail </span></a>
-            <a class="hidden-dm" href="https://github.com/mechtronica/mechtronica.net/issues"><img class="w-25 mx-10" src="{{site.url}}/images/github-mark.svg"/></a>
-            <a class="hidden-lm" href="https://github.com/mechtronica/mechtronica.net/issues"><img class="w-25 mx-10" src="{{site.url}}/images/github-mark-white.svg"/></a>
-            <a class="hidden-dm" href="https://discord.gg/VPzzYHqxFy"><img class="w-25 mx-10" src="{{site.url}}/images/discord-mark-black.svg"/></a>
-            <a class="hidden-lm" href="https://discord.gg/VPzzYHqxFy"><img class="w-25 mx-10" src="{{site.url}}/images/discord-mark-white.svg"/></a>
-          </div>
-          <p class="font-size-14 text-center"> The website is licensed under <br> <a href="https://creativecommons.org/licenses/by-sa/4.0/legalcode"> Creative Commons CC BY-SA </a></p>
-        </div>
-      </div>
-      <!-- Sidebar end -->
+                <p class="center font-sm"> The website is licensed under <br> <a class="font-sm" href="https://creativecommons.org/licenses/by-sa/4.0/legalcode"> Creative Commons CC BY-SA </a></p>
+            </div>
+      </details>
 
-      <!-- Content wrapper start -->
-      <div class="content-wrapper d-flex flex-column overflow-hidden">
-        <button class="btn btn-square left-0 m-10" type="button" onclick="halfmoon.toggleSidebar()">
-          <span>☰</span>
-          <span class="sr-only">Toggle sidebar</span> <!-- sr-only = show only on screen readers -->
-        </button>
-        <div class="content overflow-y-scroll" style="margin: 0 20px 0 20px;">
+      <main class="vbox width-full">
+        <div class="vbox padding scroll-y width-xl center main-content">
           {{ content | safe }}
         </div>
-        <div class="flex-grow-1">
-        </div>
-        <div class="bg-dark-dm bg-white-lm p-10 w-full border-top">
-          <p class="m-0 text-center"> Have questions? <br class="d-md-none"> <a href="https://discord.gg/VPzzYHqxFy"> Join our Discord </a> and ask away! </p>
-        </div>
-      </div>
-
-      <!-- Content wrapper end -->
-
-    </div>
-    <script src="{{site.url}}/halfmoonui/js/halfmoon.min.js"></script>
+        <div class="spacer"></div>
+        <footer class="background-color">
+          <p class="text-center font-sm"> Have questions? <br> <a class="font-sm" href="https://discord.gg/VPzzYHqxFy"> Join our Discord </a> and ask away! </p>
+        </footer>
+      </main>
   </body>
 </html>

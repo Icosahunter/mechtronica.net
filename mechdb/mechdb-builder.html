@@ -78,12 +78,8 @@ permalink: mechdb/builder/
         border: 3px solid yellow;
     }
 
-    .stats-table {
-        width: 100%;
-    }
-
     .stats-table * {
-        font-size: 1.5rem;
+        font-size: 1rem;
     }
 
     .stats-table th {
@@ -104,6 +100,7 @@ permalink: mechdb/builder/
 
     .mech-layout {
         width: 50vh;
+        position: relative;
     }
 
     .part-search {
@@ -111,7 +108,12 @@ permalink: mechdb/builder/
     }
 
     .part-table {
-        height: calc(100vh - 23rem);
+        height: calc(100vh - 13rem);
+    }
+
+    td {
+        font-size: 1rem;
+        padding: 0.25em;
     }
 
     .layout-and-parts-container {
@@ -154,14 +156,14 @@ permalink: mechdb/builder/
     }
 
 </style>
-<div class="d-flex layout-and-parts-container">
-    <div class="d-flex flex-column mech-layout-container" style="margin: 0 2% 0 2%;">
-        <div class="d-flex">
-            <details class="collapse-panel flex-grow-1">
-                <summary class="collapse-header" style="cursor: pointer;">
+<div class="vbox layout-and-parts-container">
+    <div class="vbox mech-layout-container" style="margin: 0 2% 0 2%;">
+        <div class="vbox">
+            <details>
+                <summary style="cursor: pointer;">
                     Resources
                 </summary>
-                <table class="stats-table">
+                <table class="stats-table width-full">
                     <tbody>
                         <tr>
                             <th></th>
@@ -202,13 +204,12 @@ permalink: mechdb/builder/
                     </tbody>
                 </table>
             </details>
-            <button class="btn btn-square" onclick="clearSlotClick();">
-                <span>🗑️</span>
-                <span class="sr-only">Clear slot</span> <!-- sr-only = show only on screen readers -->
+            <button class="square" onclick="clearSlotClick();">
+                <span aria-label="Clear Slot">🗑️</span>
             </button>
         </div>
 
-        <div class="position-relative mech-layout">
+        <div class="mech-layout">
 
             <img style="margin-top: 7%; width: 100%;" src="{{site.url}}/images/frames/standard-background-w-box.svg">
 
@@ -352,14 +353,14 @@ permalink: mechdb/builder/
         </div>
     </div>
 
-    <div class="part-search">
-        <div class="d-flex m-10">
-            <a class="btn btn-square" style="padding: 0 0.15em;" href="#modal-1" onclick="showHelp()">ℹ️</a>
-            <p class="m-0 mr-10">&nbsp;Search: </p>
+    <div class="part-search vbox">
+        <div class="hbox">
+            <a class="square" style="padding: 0 0.15em;" href="#modal-1" onclick="showHelp()">ℹ️</a>
+            <p>Search: </p>
             <input type='search' class='form-control' id='mechdb-search' placeholder='Search MechDB'>
         </div>
-        <div class="d-flex m-10">
-            <p class="m-0 mr-10">Filters: </p>
+        <div class="hbox">
+            <p>Filters: </p>
             <select class="form-control" style="max-width: 200px;" id="type-select" onchange="setFilter('type', type_select.value)">
                 <option value="Any" selected="selected">Any</option>
                 <option value="Frame">Frame</option>
@@ -400,7 +401,7 @@ permalink: mechdb/builder/
                 <option value="Erimos Mining Corp.">Erimos Mining Corp.</option>
             </select>
         </div>
-        <div class="overflow-y-scroll overflow-x-scroll part-table" style="width: 100%;">
+        <div class="scroll-y scroll-x part-table" style="width: 100%;">
             <table class='table' id='results'></table>
         </div>
     </div>

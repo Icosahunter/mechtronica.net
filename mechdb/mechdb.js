@@ -182,7 +182,6 @@ function refreshTable() {
         ordered_headers.push(x);
       }
     }
-
     for (let x of shown_data) {
       text += '<tr>';
       if (use_select_column) {
